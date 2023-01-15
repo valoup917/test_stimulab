@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Données CSV</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css" rel="stylesheet">
+  </head>
+  <body>
+    <table class="border-collapse w-full">
+      <thead class="bg-gray-200">
+        <tr>
+          <th class="px-4 py-2">Nom</th>
+          <th class="px-4 py-2">Sujet</th>
+          <th class="px-4 py-2">Type</th>
+          <th class="px-4 py-2">Contenu</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for row in data %}
+        <tr class="text-gray-700">
+          <td class="border px-4 py-2">{{row[0]}}</td>
+          <td class="border px-4 py-2">{{row[1]}}</td>
+          <td class="border px-4 py-2">{{row[2]}}</td>
+          <td class="border px-4 py-2">{{row[3]}}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <form class="bg-gray-200 py-4 px-6 rounded-lg" method="post" action="{{url_for('add_data')}}">
+      <label class="block text-gray-700 font-medium mb-2">Name:</label>
+      <input class="border rounded-lg py-2 px-3 w-full" type="text" name="name">
+      <br>
+      <label class="block text-gray-700 font-medium mb-2">Theme:</label>
+      <input class="border rounded-lg py-2 px-3 w-full" type="text" name="theme">
+      <br>
+      <label class="block text-gray-700 font-medium mb-2">Private:</label>
+      <input class="border rounded-lg py-2 px-3 w-full" type="checkbox" name="private">
+      <br>
+      <label class="block text-gray-700 font-medium mb-2">Message:</label>
+      <textarea class="border rounded-lg py-2 px-3 w-full" name="message"></textarea>
+      <br>
+      <input class="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded-lg" type="submit" value="Submit">
+    </form>
+  </body>
+</html>
